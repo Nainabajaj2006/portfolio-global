@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naina Bajaj | LinkedIn Growth Strategist for Founders</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4G5BPZCEPN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4G5BPZCEPN');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg: #0A0A0A;
+  --surface: #111111;
+  --surface2: #161616;
+  --gold: #C9A84C;
+  --gold-light: #E2C47A;
+  --white: #F5F5F0;
+  --gray: #666660;
+  --border: rgba(201,168,76,0.15);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--white); font-family: 'Inter', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; padding: 28px 60px; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: linear-gradient(to bottom, var(--bg) 50%, transparent); }
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; letter-spacing: 0.05em; color: var(--white); }
+.nav-right { display: flex; align-items: center; gap: 32px; }
+.nav-link { color: var(--gray); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.05em; transition: color 0.3s; }
+.nav-link:hover { color: var(--gold); }
+.nav-cta { background: var(--gold); color: var(--bg); padding: 10px 28px; border-radius: 2px; text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.3s ease; }
+.nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+/* HERO */
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 140px 60px 100px; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: radial-gradient(ellipse at top right, rgba(201,168,76,0.06) 0%, transparent 70%); pointer-events: none; }
+.hero-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; }
+.hero-line { width: 40px; height: 1px; background: var(--gold); }
+.hero-eyebrow span { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 7vw, 96px); font-weight: 700; line-height: 1.0; letter-spacing: -0.01em; margin-bottom: 32px; max-width: 800px; }
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-sub { font-size: clamp(0.95rem, 1.5vw, 1.1rem); color: var(--gray); max-width: 520px; line-height: 1.8; margin-bottom: 56px; }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 80px; }
+.btn-primary { background: var(--gold); color: var(--bg); padding: 16px 40px; border-radius: 2px; text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.3s ease; }
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,168,76,0.2); }
+.btn-secondary { border: 1px solid rgba(245,245,240,0.2); color: var(--white); padding: 16px 40px; border-radius: 2px; text-decoration: none; font-size: 0.88rem; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.3s ease; }
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+.hero-proof { display: flex; gap: 48px; padding-top: 48px; border-top: 1px solid var(--border); }
+.proof-item { }
+.proof-num { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 700; color: var(--gold-light); line-height: 1; margin-bottom: 4px; }
+.proof-label { font-size: 0.75rem; color: var(--gray); letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* MARQUEE */
+.marquee-wrap { background: var(--gold); padding: 14px 0; overflow: hidden; white-space: nowrap; }
+.marquee-track { display: inline-block; animation: marquee 20s linear infinite; }
+.marquee-track span { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bg); padding: 0 40px; }
+.marquee-track span::after { content: '◆'; margin-left: 40px; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* RESULTS */
+.results-section { padding: 120px 60px; background: var(--surface); }
+.section-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.section-line { width: 32px; height: 1px; background: var(--gold); }
+.section-eyebrow span { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.6rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 16px; }
+.section-sub { color: var(--gray); font-size: 0.95rem; line-height: 1.7; max-width: 480px; margin-bottom: 64px; }
+.charts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--border); border: 1px solid var(--border); }
+.chart-card { background: var(--bg); padding: 36px; transition: all 0.3s ease; }
+.chart-card:hover { background: var(--surface2); }
+.chart-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px; }
+.chart-metric { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 700; line-height: 1; color: var(--white); margin-bottom: 4px; }
+.chart-label { font-size: 0.72rem; color: var(--gray); letter-spacing: 0.1em; text-transform: uppercase; }
+.chart-badge { background: rgba(201,168,76,0.1); color: var(--gold); padding: 6px 14px; border-radius: 2px; font-size: 0.75rem; font-weight: 500; border: 1px solid rgba(201,168,76,0.2); white-space: nowrap; }
+
+/* SERVICES */
+.services-section { padding: 120px 60px; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); border: 1px solid var(--border); margin-top: 64px; }
+.service-card { background: var(--bg); padding: 48px 40px; transition: all 0.3s ease; position: relative; overflow: hidden; }
+.service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.4s ease; }
+.service-card:hover { background: var(--surface2); }
+.service-card:hover::before { transform: scaleX(1); }
+.service-num { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 700; color: rgba(201,168,76,0.08); line-height: 1; margin-bottom: 24px; }
+.service-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; margin-bottom: 14px; color: var(--white); }
+.service-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.8; }
+
+/* PROCESS */
+.process-section { padding: 120px 60px; background: var(--surface); }
+.process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); margin-top: 64px; }
+.process-card { background: var(--bg); padding: 48px 40px; }
+.process-step-num { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--gold); letter-spacing: 0.15em; margin-bottom: 24px; display: block; }
+.process-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 14px; }
+.process-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.8; }
+
+/* PACKAGES */
+.packages-section { padding: 120px 60px; }
+.packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 64px; max-width: 1100px; }
+.package-card { border: 1px solid var(--border); padding: 48px 36px; transition: all 0.3s ease; position: relative; background: var(--surface); }
+.package-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-4px); }
+.package-card.featured { border-color: var(--gold); background: var(--surface2); }
+.featured-tag { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--bg); padding: 4px 18px; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
+.package-tier { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: block; }
+.package-price { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+.package-period { font-size: 0.8rem; color: var(--gray); margin-bottom: 32px; }
+.package-divider { height: 1px; background: var(--border); margin-bottom: 28px; }
+.package-features { list-style: none; margin-bottom: 36px; }
+.package-features li { font-size: 0.86rem; color: var(--gray); padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; gap: 12px; align-items: flex-start; line-height: 1.5; }
+.package-features li::before { content: '—'; color: var(--gold); flex-shrink: 0; font-size: 0.8rem; margin-top: 1px; }
+.package-note { font-size: 0.78rem; color: var(--gray); font-style: italic; margin-bottom: 32px; line-height: 1.6; }
+.btn-package { display: block; text-align: center; padding: 14px; border: 1px solid rgba(245,245,240,0.15); color: var(--white); text-decoration: none; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.3s ease; }
+.btn-package:hover { border-color: var(--gold); color: var(--gold); }
+.package-card.featured .btn-package { background: var(--gold); border-color: var(--gold); color: var(--bg); }
+.package-card.featured .btn-package:hover { background: var(--gold-light); }
+
+/* CONTACT */
+.contact-section { padding: 140px 60px; background: var(--surface); text-align: center; position: relative; overflow: hidden; }
+.contact-section::before { content: 'WORK WITH ME'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Cormorant Garamond', serif; font-size: clamp(60px, 12vw, 160px); font-weight: 700; color: transparent; -webkit-text-stroke: 1px rgba(201,168,76,0.05); white-space: nowrap; user-select: none; }
+.contact-section .section-title { color: var(--white); position: relative; z-index: 1; margin-bottom: 20px; }
+.contact-section p { color: var(--gray); font-size: 1rem; max-width: 440px; margin: 0 auto 48px; line-height: 1.8; position: relative; z-index: 1; }
+.contact-section .btn-primary { position: relative; z-index: 1; display: inline-block; font-size: 0.9rem; padding: 18px 56px; }
+
+/* FOOTER */
+footer { background: var(--bg); border-top: 1px solid var(--border); padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; color: var(--gray); font-size: 0.78rem; }
+footer a { color: var(--gold); text-decoration: none; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(28px); transition: all 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  nav { padding: 20px 24px; }
+  .nav-right .nav-link { display: none; }
+  .hero { padding: 100px 24px 60px; }
+  .hero-proof { flex-wrap: wrap; gap: 28px; }
+  .results-section, .services-section, .process-section, .packages-section { padding: 80px 24px; }
+  .charts-grid, .services-grid, .process-grid, .packages-grid { grid-template-columns: 1fr; }
+  .contact-section { padding: 80px 24px; }
+  footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Naina Bajaj</div>
+  <div class="nav-right">
+    <a href="#results" class="nav-link">Results</a>
+    <a href="#services" class="nav-link">Services</a>
+    <a href="#packages" class="nav-link">Pricing</a>
+    <a href="https://calendly.com/nainabajaj184" target="_blank" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">
+    <div class="hero-line"></div>
+    <span>LinkedIn Growth Strategist</span>
+  </div>
+  <h1>I build LinkedIn<br>presence that<br><em>closes deals.</em></h1>
+  <p class="hero-sub">Founders hire me to run their LinkedIn completely. Content, engagement, lead generation. While you build — I grow your audience and pipeline.</p>
+  <div class="hero-actions">
+    <a href="https://calendly.com/nainabajaj184" target="_blank" class="btn-primary">Book a Free Call</a>
+    <a href="#packages" class="btn-secondary">View Pricing</a>
+  </div>
+  <div class="hero-proof">
+    <div class="proof-item">
+      <div class="proof-num">63.5K</div>
+      <div class="proof-label">Impressions in 90 days</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-num">+532%</div>
+      <div class="proof-label">Engagement growth</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-num">5,117</div>
+      <div class="proof-label">Total followers</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-num">14+</div>
+      <div class="proof-label">Leads in one month</div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>LinkedIn Management</span>
+    <span>Content Strategy</span>
+    <span>Lead Generation</span>
+    <span>Profile Optimization</span>
+    <span>Founder Branding</span>
+    <span>Audience Growth</span>
+    <span>LinkedIn Management</span>
+    <span>Content Strategy</span>
+    <span>Lead Generation</span>
+    <span>Profile Optimization</span>
+    <span>Founder Branding</span>
+    <span>Audience Growth</span>
+  </div>
+</div>
+
+<section class="results-section" id="results">
+  <div class="section-eyebrow reveal">
+    <div class="section-line"></div>
+    <span>Proof of Work</span>
+  </div>
+  <h2 class="section-title reveal">Real numbers.<br>One founder. 90 days.</h2>
+  <p class="section-sub reveal">Actual LinkedIn analytics from a founder I managed. Every number is verifiable.</p>
+  <div class="charts-grid">
+    <div class="chart-card reveal">
+      <div class="chart-header">
+        <div>
+          <div class="chart-metric">63,556</div>
+          <div class="chart-label">Impressions</div>
+        </div>
+        <div class="chart-badge">+298.2%</div>
+      </div>
+      <canvas id="impressionsChart"></canvas>
+    </div>
+    <div class="chart-card reveal">
+      <div class="chart-header">
+        <div>
+          <div class="chart-metric">6,980</div>
+          <div class="chart-label">Engagements</div>
+        </div>
+        <div class="chart-badge">+532.3%</div>
+      </div>
+      <canvas id="engagementsChart"></canvas>
+    </div>
+    <div class="chart-card reveal">
+      <div class="chart-header">
+        <div>
+          <div class="chart-metric">5,117</div>
+          <div class="chart-label">Total Followers</div>
+        </div>
+        <div class="chart-badge">+59.6%</div>
+      </div>
+      <canvas id="followersChart"></canvas>
+    </div>
+    <div class="chart-card reveal">
+      <div class="chart-header">
+        <div>
+          <div class="chart-metric">1,107</div>
+          <div class="chart-label">Profile Viewers</div>
+        </div>
+        <div class="chart-badge">+2% weekly</div>
+      </div>
+      <canvas id="viewersChart"></canvas>
+    </div>
+  </div>
+</section>
+
+<section class="services-section" id="services">
+  <div class="section-eyebrow reveal">
+    <div class="section-line"></div>
+    <span>What I Do</span>
+  </div>
+  <h2 class="section-title reveal">Three things.<br>Done exceptionally well.</h2>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <h3>Profile Optimization</h3>
+      <p>Your LinkedIn profile is your landing page. I rewrite your headline, about section, and experience to position you as the go-to person in your space.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">02</div>
+      <h3>Content Strategy and Writing</h3>
+      <p>Consistent, on-brand content that sounds like you. I write, schedule, and track everything. Adjustments are based on real data, not guesses.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">03</div>
+      <h3>Lead Generation</h3>
+      <p>Strategic outreach to your ideal clients. I identify, connect, and nurture. Your LinkedIn becomes a pipeline of warm, qualified leads every month.</p>
+    </div>
+  </div>
+</section>
+
+<section class="process-section">
+  <div class="section-eyebrow reveal">
+    <div class="section-line"></div>
+    <span>My Process</span>
+  </div>
+  <h2 class="section-title reveal">How it works</h2>
+  <div class="process-grid">
+    <div class="process-card reveal">
+      <span class="process-step-num">WEEK 01</span>
+      <h3>Deep Dive</h3>
+      <p>I learn your brand, audience, and goals. I build a content calendar that reflects all of your ventures and speaks directly to your ideal clients.</p>
+    </div>
+    <div class="process-card reveal">
+      <span class="process-step-num">ONGOING</span>
+      <h3>Full Execution</h3>
+      <p>I write, post, engage, and track. You focus on building. I handle LinkedIn completely. No weekly briefing calls needed.</p>
+    </div>
+    <div class="process-card reveal">
+      <span class="process-step-num">WEEKLY</span>
+      <h3>Real Reporting</h3>
+      <p>Every week you get a clear report on what's working and what's not. We adjust based on numbers. No guesswork, ever.</p>
+    </div>
+  </div>
+</section>
+
+<section class="packages-section" id="packages">
+  <div class="section-eyebrow reveal">
+    <div class="section-line"></div>
+    <span>Pricing</span>
+  </div>
+  <h2 class="section-title reveal">Transparent pricing.<br>No surprises.</h2>
+  <div class="packages-grid">
+    <div class="package-card reveal">
+      <span class="package-tier">Starter</span>
+      <div class="package-price">$299</div>
+      <div class="package-period">per month</div>
+      <div class="package-divider"></div>
+      <ul class="package-features">
+        <li>3 posts per week (12/month)</li>
+        <li>Content writing and scheduling</li>
+        <li>Basic performance tracking</li>
+        <li>Monthly analytics report</li>
+      </ul>
+      <p class="package-note">Good for: Founders testing LinkedIn as a growth channel</p>
+      <a href="https://calendly.com/nainabajaj184" target="_blank" class="btn-package">Get Started</a>
+    </div>
+    <div class="package-card featured reveal">
+      <div class="featured-tag">Most Popular</div>
+      <span class="package-tier">Growth</span>
+      <div class="package-price">$599</div>
+      <div class="package-period">per month</div>
+      <div class="package-divider"></div>
+      <ul class="package-features">
+        <li>4 posts per week (16/month)</li>
+        <li>Content writing and scheduling</li>
+        <li>Engagement and community management</li>
+        <li>Weekly analytics report</li>
+        <li>Profile optimization included</li>
+      </ul>
+      <p class="package-note">Good for: Founders who want real traction and inbound leads</p>
+      <a href="https://calendly.com/nainabajaj184" target="_blank" class="btn-package">Get Started</a>
+    </div>
+    <div class="package-card reveal">
+      <span class="package-tier">Full Management</span>
+      <div class="package-price">$999</div>
+      <div class="package-period">per month</div>
+      <div class="package-divider"></div>
+      <ul class="package-features">
+        <li>5 posts per week (20/month)</li>
+        <li>Everything in Growth</li>
+        <li>Lead generation outreach</li>
+        <li>Monthly strategy calls</li>
+        <li>Full LinkedIn takeover</li>
+      </ul>
+      <p class="package-note">Good for: Founders ready to make LinkedIn their primary growth channel</p>
+      <a href="https://calendly.com/nainabajaj184" target="_blank" class="btn-package">Get Started</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section">
+  <h2 class="section-title reveal">Let's build your<br><em style="color:var(--gold-light); font-family:'Cormorant Garamond',serif;">LinkedIn presence.</em></h2>
+  <p class="reveal">Book a free 30 minute call. No pitch, no pressure. Just a real conversation about your goals and whether we're a good fit.</p>
+  <a href="https://calendly.com/nainabajaj184" target="_blank" class="btn-primary reveal">Book a Free Call</a>
+</section>
+
+<footer>
+  <span>2025 Naina Bajaj</span>
+  <a href="https://mail.google.com/mail/?view=cm&to=Nainabajaj1806@gmail.com" target="_blank">Nainabajaj1806@gmail.com</a>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+Chart.defaults.font.family = "'Inter', sans-serif";
+Chart.defaults.color = '#666660';
+
+const labels = ['Nov 29','Dec 6','Dec 13','Dec 20','Dec 27','Jan 3','Jan 10','Jan 17','Jan 24','Jan 31','Feb 7','Feb 14','Feb 21','Feb 28'];
+const gold = '#C9A84C';
+
+function makeChart(id, data, fill) {
+  const ctx = document.getElementById(id).getContext('2d');
+  const gradient = ctx.createLinearGradient(0, 0, 0, 160);
+  gradient.addColorStop(0, 'rgba(201,168,76,0.15)');
+  gradient.addColorStop(1, 'rgba(201,168,76,0)');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        data: data,
+        borderColor: gold,
+        borderWidth: 2,
+        backgroundColor: fill ? gradient : 'transparent',
+        fill: fill,
+        tension: 0.4,
+        pointRadius: 0,
+        pointHoverRadius: 4,
+        pointHoverBackgroundColor: gold
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { backgroundColor: '#161616', titleColor: '#C9A84C', bodyColor: '#F5F5F0', padding: 10, cornerRadius: 2, borderColor: 'rgba(201,168,76,0.2)', borderWidth: 1 }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { maxTicksLimit: 4, font: { size: 10 }, color: '#444' } },
+        y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { font: { size: 10 }, color: '#444', callback: function(v) { return v >= 1000 ? (v/1000).toFixed(0)+'k' : v; } } }
+      }
+    }
+  });
+}
+
+makeChart('impressionsChart', [200, 900, 2800, 5000, 7500, 12000, 18000, 25000, 33000, 42000, 50000, 55000, 60000, 63556], true);
+makeChart('engagementsChart', [20, 80, 250, 500, 750, 1200, 1800, 2600, 3600, 4600, 5200, 5800, 6400, 6980], true);
+makeChart('followersChart', [0, 30, 80, 180, 280, 500, 1000, 1200, 1400, 1600, 1750, 1850, 1950, 2050], true);
+makeChart('viewersChart', [60, 100, 120, 130, 40, 90, 240, 130, 120, 120, 155, 120, 110, 110], false);
+</script>
+</body>
+</html>
